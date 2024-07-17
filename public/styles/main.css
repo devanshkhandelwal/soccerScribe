@@ -1,0 +1,303 @@
+body {
+    background-color: #121212;
+    color: #e0e0e0;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    margin: 0;
+    padding: 0;
+    height: 100%;
+    line-height: 1.4;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    font-size: 14px;
+    background-color: #06000a;
+background-image: url("https://www.transparenttextures.com/patterns/asfalt-light.png");
+/* This is mostly intended for prototyping; please download the pattern and re-host for production environments. Thank you! */
+}
+
+
+.container {
+    max-width: 800px;
+    margin: 20px auto;
+    padding: 10px;
+    position: relative;
+    flex: 1;
+}
+
+.site-header {
+    text-align: center;
+    margin-bottom: 20px;
+    position: relative; 
+}
+
+.site-header h1 {
+    font-size: 2.5em; 
+    color: #9961de;
+    text-transform: uppercase;
+    letter-spacing: 2px; 
+    margin: 0;
+    padding: 20px 0; 
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5); 
+    position: relative; 
+}
+
+.site-header h1::before, .site-header h1::after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    width: 30%;
+    height: 2px;
+    background-color: #9961de;
+}
+
+.site-header h1::before {
+    left: 0;
+    transform: translateY(-50%);
+}
+
+.site-header h1::after {
+    right: 0;
+    transform: translateY(-50%);
+}
+
+.site-header p {
+    font-size: 1.2em; 
+    color: #bb86fc;
+    margin-top: 10px; 
+    text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.5); 
+}
+
+.filter-search-container {
+    background-color: #1E1E1E;
+    padding: 10px;
+    border-radius: 6px;
+    margin-bottom: 20px;
+    display: flex;
+    align-items: flex-start; 
+    gap: 10px; 
+}
+
+.filter-search-container form {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.filter-search-container select,
+.filter-search-container input[type="text"] {
+    padding: 10px; 
+    background-color: #2C2C2C;
+    border: 1px solid #444;
+    color: #e0e0e0;
+    border-radius: 4px;
+    font-size: 14px; 
+    width: 180px; 
+}
+
+.filter-search-container input[type="text"] {
+    width: auto; 
+}
+
+.search-btn {
+    padding: 10px 15px; 
+    background-color: #3700B3;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+    font-size: 14px;
+    margin-left: 10px;
+    text-decoration: none;
+    text-align: center;
+}
+
+.search-btn:hover {
+    background-color: #5600E8;
+}
+
+.add-review-btn, .delete-btn, .edit-btn, form button {
+    background-color: #3700B3;
+    color: white;
+    padding: 8px 15px;
+    border-radius: 4px;
+    text-decoration: none;
+    border: none;
+    cursor: pointer;
+    transition: background-color 0.3s, transform 0.2s;
+    font-weight: bold;
+    font-size: 12px;
+}
+
+.add-review-btn {
+    display: inline-block;
+    position: absolute;
+    top: 10px;
+    right: 10px;
+}
+
+.add-review-btn:hover, .delete-btn:hover, .edit-btn:hover, form button:hover {
+    background-color: #5600E8;
+    transform: translateY(-1px);
+}
+
+/* Additional CSS for not-allowed buttons */
+.not-allowed {
+    background-color: #3700B3;
+    cursor: not-allowed; /* Change cursor to not-allowed */
+}
+
+.not-allowed:hover {
+    background-color: #3700B3; /* Keep the background color the same on hover */
+    transform: none; /* Disable the transform effect on hover */
+}
+
+.review-actions {
+    margin-bottom: 15px; /* Add space below the action buttons */
+}
+
+.review-item {
+    background-color: #1E1E1E;
+    padding: 15px;
+    margin-bottom: 20px;
+    border-radius: 6px;
+    position: relative;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.review-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 10px;
+}
+
+.review-item h2 {
+    font-size: 1.2em;
+    margin: 0;
+    color: #BB86FC;
+}
+
+.review-meta {
+    font-size: 0.9em;
+    color: #a0a0a0;
+    margin-bottom: 8px;
+}
+
+.review-text {
+    font-size: 1em;
+    line-height: 1.6;
+    margin-bottom: 10px;
+    color: #f0f0f0;
+}
+
+#review {
+    width: 800px;
+    height: 100px;
+}
+
+.team-with-badge {
+    display: inline-flex;
+    align-items: center;
+}
+
+.badge-form {
+    display: inline;
+}
+
+.badge-button {
+    background: none;
+    border: none;
+    padding: 0;
+    cursor: pointer;
+}
+
+.team-badge {
+    width: 20px;
+    height: 20px;
+    vertical-align: middle;
+    margin: 0 5px;
+    border-radius: 50%;
+    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
+}
+
+.review-actions {
+    display: flex;
+    gap: 10px;
+}
+
+.delete-btn {
+    background-color: #CF6679;
+}
+
+.edit-btn {
+    background-color: #03DAC6;
+    color: #000;
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 20px;
+}
+
+form input, form textarea, form select {
+    width: 100%;
+    padding: 8px;
+    margin-bottom: 10px;
+    border: none;
+    border-radius: 4px;
+    background-color: #2C2C2C;
+    color: #e0e0e0;
+    font-size: 0.9em;
+}
+
+form button {
+    align-self: flex-start;
+}
+footer {
+    text-align: center;
+    padding: 15px;
+    background-color: #1E1E1E;
+    color: #BB86FC;
+    border-top: 1px solid #333;
+    font-size: 0.9em;
+    width: 100%; 
+}
+
+@media (max-width: 768px) {
+    .container {
+        padding: 10px;
+    }
+    
+    .add-review-btn {
+        position: static;
+        display: block;
+        margin-bottom: 15px;
+    }
+    
+    .review-header {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .review-actions {
+        margin-top: 10px;
+    }
+
+    .filter-search-container {
+        flex-direction: column;
+        align-items: stretch;
+    }
+
+    .filter-search-container form {
+        flex-direction: column;
+        width: 100%;
+    }
+
+    .filter-search-container select,
+    .filter-search-container input[type="text"] {
+        width: 100%;
+        margin-bottom: 8px;
+    }
+}

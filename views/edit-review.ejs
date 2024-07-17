@@ -1,0 +1,51 @@
+<%- include('partials/header.ejs') %>
+<body>
+    <div class="container">
+        <h1>Edit Review</h1>
+        <form action="/edit-review/<%= result.id %>" method="POST">
+            <input type="hidden" name="id" value="<%= result.id %>">
+            <label for="home">Home Team</label>
+            <input type="text" id="home" name="home" value="<%= result.home %>" required>
+            <label for="home_score">Home Team Score</label>
+            <input type="number" id="home_score" name="home_score" value="<%= result.home_score %>" required>
+            <label for="away">Away Team</label>
+            <input type="text" id="away" name="away" value="<%= result.away %>" required>
+            <label for="away_score">Away Team Score</label>
+            <input type="number" id="away_score" name="away_score" value="<%= result.away_score %>" required>
+            <label for="competition">Competition</label>
+            <select id="competition" name="competition" onchange="checkNewCompetition(this)">
+                <option value="">Select a competition</option>
+                <% competitions.forEach(comp => { %>
+                    <% if (comp.name === defaultValue) { %>
+                        <option value="<%= comp.name %>" selected><%= comp.name %></option>
+                    <% } else { %>
+                        <option value="<%= comp.name %>"><%= comp.name %></option>
+                    <% } %>
+                <% }); %>
+                <option value="new_competition">Add New Competition</option>
+            </select>
+            <input type="text" id="new_competition" name="new_competition" placeholder="Enter New Competition" style="display: none;">
+            </select>
+            <label for="date">Date</label>
+            <input type="date" id="date" name="date" value="<%= new Date(result.date).toISOString().split('T')[0] %>" required>
+            <label for="review">Review</label>
+            <textarea id="review" name="review" required><%= result.review %></textarea>
+            <button type="submit">Update Review</button>
+        </form>
+        <script>
+            function checkNewCompetition(select) {
+                const newCompetitionInput = document.getElementById('new_competition');
+                if (select.value === 'new_competition') {
+                    newCompetitionInput.style.display = 'inline-block';
+                    newCompetitionInput.setAttribute('required', 'true');
+                } else {
+                    newCompetitionInput.style.display = 'none';
+                    newCompetitionInput.removeAttribute('required');
+                }
+            }
+        </script>    
+        <a href="/" class="back-btn">Back to Reviews</a>
+    </div>
+</body>
+<%- include('partials/footer.ejs') %>
+</html>

@@ -1,0 +1,23 @@
+<%- include('partials/header.ejs') %>
+
+<body>
+    <div class="container">
+        <h1>Login to <a href="/">SoccerScribe</a></h1>
+        <p>Please enter your credentials to access your account and manage your soccer match reviews.</p>
+        <form action="/login" method="post" class="login-form">
+            <div class="form-group">
+                <label for="username">Username:</label>
+                <input type="text" id="username" name="username" required>
+            </div>
+            <div class="form-group">
+                <label for="password">Password:</label>
+                <input type="password" id="password" name="password" required>
+            </div>
+            <button type="submit" class="login-btn">Login</button>
+        </form>
+        <p>Don't have an account? <a href="mailto:khanded@purdue.edu">Contact</a> the site admin to get access.</p>
+        <a href="/" class="back-btn">Back to Reviews</a>
+    </div>
+
+<%- include('partials/footer.ejs') %>
+</html>

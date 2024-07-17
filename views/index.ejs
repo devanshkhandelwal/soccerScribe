@@ -1,0 +1,108 @@
+<%- include('partials/header.ejs') %>
+<body>
+    <div class="container">
+        <header class="site-header">
+            <h1><a href="/">SoccerScribe</a></h1>
+            <p>By Devansh Khandelwal</p>
+            <% if (authenticated) { %> 
+            <a href="/add-review" class="add-review-btn">Add Review</a>
+            <% } else { %>
+            <a href="#" id="addButton" class="add-review-btn not-allowed">Add Review</a>
+            <% } %>
+        </header>
+
+        <div class="filter-search-container">
+            <form action="/filter-reviews" method="post" id="filter-form">
+                <select name="team" id="team">
+                    <option value="All Teams" <%= curTeam === "All Teams" ? "selected" : "" %>>All Teams</option>
+                    <% teams.sort((a, b) => a.localeCompare(b)).forEach(team => { %>
+                        <option value="<%= team %>" <%= curTeam === team ? "selected" : "" %>><%= team %></option>
+                    <% }); %>
+                </select>
+                
+                <select name="competition" id="competition">
+                    <option value="All Competitions" <%= curCompetition === "All Competitions" ? "selected" : "" %>>All Competitions</option>
+                    <% competitions.sort((a, b) => a.name.localeCompare(b.name)).forEach(competition => { %>
+                        <option value="<%= competition.name %>" <%= curCompetition === competition.name ? "selected" : "" %>><%= competition.name %></option>
+                    <% }); %>
+                </select>
+            </form>
+            
+            <form action="/search-reviews" method="post" class="search-form">
+                <input type="text" id="search" name="search" placeholder="Search with keyword...">
+                <button type="submit" class="search-btn">Search</button>
+            </form>
+        
+            <a href="/about" class="search-btn">About</a>
+            <% if (!authenticated) { %> 
+            <a href="/login" class="search-btn">Sign In</a>
+            <% } else { %>
+            <a href="/logout" class="search-btn">Logout</a>
+            <% } %>
+        </div>
+
+        <div class="review-list">
+            <% listItems.forEach(review => { %>
+                <div class="review-item">
+                    <div class="review-actions">
+                        <% if (authenticated) { %> 
+                            <form action="/delete-review/<%= review.id %>" method="post" onsubmit="return confirm('Are you sure you want to delete this review?');">
+                                <input type="hidden" name="_method" value="DELETE">
+                                <button type="submit" class="delete-btn">Delete</button>
+                            </form>
+                            <form action="/edit-review/<%= review.id %>" method="get">
+                                <button type="submit" class="edit-btn">Edit</button>
+                            </form>
+                        <% } else { %>
+                            <button class="delete-btn not-allowed">Delete</button>
+                            <button class="edit-btn not-allowed">Edit</button>
+                        <% } %>
+                    </div>
+                    <h2>
+                        <%= review.home %> <%= review.home_score %> - <%= review.away_score %> <%= review.away %>
+                    </h2>
+                    <p><strong><%= review.competition.name %></strong> - <%= review.date %></p>
+                    <p class="review-text"><%= review.review %></p>
+                    <div class="team-badges">
+                        <% if (badges && badges[review.home]) { %>
+                            <form action="/filter-reviews" method="post" class="badge-form">
+                                <input type="hidden" name="team" value="<%= review.home %>">
+                                <button type="submit" class="badge-button">
+                                    <img class="team-badge" src="<%= badges[review.home] %>" alt="<%= review.home %> Badge">
+                                </button>
+                            </form>
+                        <% } %>
+                        <% if (badges && badges[review.away]) { %>
+                            <form action="/filter-reviews" method="post" class="badge-form">
+                                <input type="hidden" name="team" value="<%= review.away %>">
+                                <button type="submit" class="badge-button">
+                                    <img class="team-badge" src="<%= badges[review.away] %>" alt="<%= review.away %> Badge">
+                                </button>
+                            </form>
+                        <% } %>
+                    </div>
+                </div>
+            <% }); %>
+        </div>
+    </div>
+
+    <script>
+        document.getElementById('team').addEventListener('change', function() {
+            document.getElementById('filter-form').submit();
+        });
+    
+        document.getElementById('competition').addEventListener('change', function() {
+            document.getElementById('filter-form').submit();
+        });
+    
+        document.querySelectorAll('.not-allowed').forEach(button => {
+            button.addEventListener('click', function(event) {
+                event.preventDefault();
+                alert('Oops! You need to be logged in to do that. Please log in or sign up.');
+            });
+        });
+    </script>
+    
+
+</body>
+<%- include('partials/footer.ejs') %>
