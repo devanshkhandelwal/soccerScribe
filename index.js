@@ -28,7 +28,7 @@ app.use(passport.session());
 const { Pool } = pg;
 
 const db = new Pool({
-    connectionString: process.env.POSTGRES_URL,
+    connectionString: process.env.POSTGRES_URL_URL,
 })
 
 db.connect()
