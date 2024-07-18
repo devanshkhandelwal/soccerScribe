@@ -48,16 +48,15 @@ background-image: url("https://www.transparenttextures.com/patterns/asfalt-light
     width: 30%;
     height: 2px;
     background-color: #9961de;
+    transform: translateY(-50%);
 }
 
 .site-header h1::before {
     left: 0;
-    transform: translateY(-50%);
 }
 
 .site-header h1::after {
     right: 0;
-    transform: translateY(-50%);
 }
 
 .site-header p {
@@ -66,6 +65,19 @@ background-image: url("https://www.transparenttextures.com/patterns/asfalt-light
     margin-top: 10px; 
     text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.5); 
 }
+
+@media (max-width: 600px) {
+    .site-header h1::before, .site-header h1::after {
+        width: 20%; /
+    }
+}
+
+@media (max-width: 400px) {
+    .site-header h1::before, .site-header h1::after {
+        width: 0; 
+    }
+}
+
 
 .filter-search-container {
     background-color: #1E1E1E;
