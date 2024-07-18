@@ -31,4 +31,4 @@ SoccerScribe is a full-stack web application designed for personal soccer match 
 #### Contact
 
 - **Website**: [soccerscribe.onrender.com](https://soccerscribe.onrender.com)
-- **Email**: [your.email@example.com](mailto:khanded@purdue.edu)
+- **Email**: [khanded@purdue.edu](mailto:khanded@purdue.edu)
